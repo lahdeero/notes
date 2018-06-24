@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import Notes from './components/notes'
+import AddNote from './components/addnote'
 
-class App extends Component {
+class App extends React.Component {
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Router>
+          <div>
+            <div>
+              <Link to="/">Notes</Link> &nbsp;
+              <Link to="/addnote">Add note</Link> &nbsp;
+              <Link to="/users">Add note</Link> &nbsp;
+            </div>
+            <Route exact path="/" render={() => <Notes />} />
+            <Route path="/addnote" render={() => <AddNote />} />
+            <Route path="/" render={() => <AddNote />} />
+          </div>
+        </Router>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
